@@ -43,7 +43,7 @@ public:
 		{
 			int left = 2 * now + 1;
 			int right = 2 * now + 2;
-
+			// 리프에 도달했을 경우
 			if (left >= (int)_heap.size())
 				break;
 
