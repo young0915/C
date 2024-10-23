@@ -31,8 +31,8 @@ void BubbleSort(vector<int>& v)
 	{
 		for (int j = 0; j < n - 1 - i; j++)
 		{
-			if (v[j] > v[j + 1])
-				swap(v[i], v[i + 1]);
+				if (v[j] > v[j + 1])
+		swap(v[j], v[j + 1]);
 		}
 	}
 }
