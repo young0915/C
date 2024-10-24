@@ -17,6 +17,14 @@ public:
 	{
 		if (_target)
 			_target->_hp = _damage;
+
+		/*
+  		// 존재하느냐 -> weak_ptr포인터를 사용했다면
+		if (_target.expired() == false)
+		{
+			shared_ptr<Knight> spr = _target.lock();
+		}
+  		*/
 	}
 
 public :
@@ -24,6 +32,7 @@ public :
 	int _hp = 100;
 	int _damage = 10;
 	shared_ptr<Knight> _target = nullptr;
+	// weak_ptr<Knight> _target;
 
 };
 
@@ -105,6 +114,12 @@ int main()
 	shared_ptr<Knight> k2(new Knight());
 
 	k1->_target = k2;
+
+
+	unique_ptr<Knight> k(new Knight());
+
+// unique_ptr 값을 대입할 수 없으니  std::move 넘기자
+unique_ptr<Knight> k2 = std::move(k);
 
 }
 
