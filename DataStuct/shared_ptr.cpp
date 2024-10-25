@@ -110,10 +110,18 @@ int main()
 	k3 = k1;*/
 
 	shared_ptr<Knight> k1(new Knight());
-	Test(k1);
-	shared_ptr<Knight> k2(new Knight());
 
+	cout << k1.use_count() << endl;		// 1
+	//Test(k1);
+	shared_ptr<Knight> k2(new Knight());
 	k1->_target = k2;
+	cout << k2.use_count() << endl;		// 2
+
+
+// 서로 타켓이 같은 상태면 나중에 두개의 객체중 하나가 삭제 된다면 
+// 메모리 릭 발생 -> 그래서 weak_ptr 사용
+// 그렇다고 해서 nullptr을 해준다? 그건 이상한 행동이다
+	k2->_target = k1;
 
 
 	unique_ptr<Knight> k(new Knight());
